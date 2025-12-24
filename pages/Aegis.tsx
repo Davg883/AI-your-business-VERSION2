@@ -1,10 +1,20 @@
-import React from 'react';
-import { Truck, Activity, Lock, ArrowRight, Map, Zap, Database } from 'lucide-react';
+import React, { useState } from 'react';
+import { Truck, Activity, Lock, ArrowRight, Database, Zap } from 'lucide-react';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
+import { QuizModal } from '../components/QuizModal';
 
 export const Aegis: React.FC = () => {
+    const [isQuizOpen, setIsQuizOpen] = useState(false);
     const missionControlImage = "https://res.cloudinary.com/dptqxjhb8/image/upload/v1765368361/DepotOS_nimktj.png";
+
+    const aegisQuestions = [
+        { id: 1, text: "Does your system physically prevent dispatch of an un-roadworthy vehicle?", options: ["Yes (Interlock)", "No (Paper Check)", "Driver Discretion"] },
+        { id: 2, text: "How accurately can you predict your fuel stock for next week?", options: ["95%+", "Rough Estimate", "Guesswork"] },
+        { id: 3, text: "If the ferry stops, how many days of operation do you have?", options: ["5+ Days", "2-4 Days", "< 48 Hours"] },
+        { id: 4, text: "Is your Tacho analysis automatically linked to payroll?", options: ["Yes", "Manual Entry", "No link"] },
+        { id: 5, text: "Can you identify your most profitable route in real-time?", options: ["Yes", "End of Month only", "No"] }
+    ];
 
     return (
         <div className="min-h-screen bg-slate-950 text-slate-200 font-sans relative overflow-x-hidden selection:bg-indigo-500/30">
@@ -34,14 +44,12 @@ export const Aegis: React.FC = () => {
                     </p>
 
                     <div className="mt-8 flex gap-4">
-                        <a
-                            href="https://www.aegislogistics.co.uk"
-                            target="_blank"
-                            rel="noreferrer"
+                        <button
+                            onClick={() => setIsQuizOpen(true)}
                             className="bg-indigo-600 hover:bg-indigo-500 text-white px-6 py-3 rounded-lg font-mono text-sm tracking-wide shadow-[0_0_20px_rgba(79,70,229,0.3)] transition-all flex items-center gap-2"
                         >
                             LAUNCH LIVE SYSTEM <ArrowRight className="w-4 h-4" />
-                        </a>
+                        </button>
                     </div>
                 </div>
 
@@ -121,6 +129,14 @@ export const Aegis: React.FC = () => {
 
                 </div>
             </div>
+
+            <QuizModal
+                isOpen={isQuizOpen}
+                onClose={() => setIsQuizOpen(false)}
+                title="LOGISTICS RESILIENCE CHECK"
+                questions={aegisQuestions}
+                accentColor="indigo"
+            />
 
             <Footer />
         </div>

@@ -1,9 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { ArrowRight, AlertTriangle, Shield, Map } from 'lucide-react';
+import { QuizModal } from '../components/QuizModal';
 
 export const SiteOS: React.FC = () => {
+    const [isQuizOpen, setIsQuizOpen] = useState(false);
+
+    const siteQuestions = [
+        { id: 1, text: "How do you currently log site attendance?", options: ["Biometric/App", "Paper Sign-in Sheet", "Verbal/Headcount"] },
+        { id: 2, text: "Can you prove who was on site 3 months ago?", options: ["Instantly", "Maybe (Digging required)", "No"] },
+        { id: 3, text: "How long does it take to generate a RAMS document?", options: ["< 5 Minutes", "30-60 Minutes", "Hours/Days"] },
+        { id: 4, text: "Do you have real-time alerts for expired CSCS cards?", options: ["Yes, automated", "Manual spreadsheet", "No tracking"] },
+        { id: 5, text: "If an accident happened today, is your audit trail ready?", options: ["100% Confident", "Nervous", "Exposed"] }
+    ];
+
     return (
         <div className="min-h-screen bg-slate-950 text-slate-200 font-sans selection:bg-indigo-500/30">
             <Header />
@@ -89,7 +100,10 @@ export const SiteOS: React.FC = () => {
                                 Initiate a site scan today. Secure your perimeter and optimize your workforce with military-grade precision.
                             </p>
 
-                            <button className="group relative inline-flex items-center gap-3 px-8 py-4 bg-indigo-900/30 border border-indigo-500/50 rounded-lg text-indigo-400 font-mono text-sm uppercase tracking-widest hover:bg-indigo-500 hover:text-white transition-all duration-300 shadow-[0_0_20px_rgba(99,102,241,0.15)] hover:shadow-[0_0_30px_rgba(99,102,241,0.5)]">
+                            <button
+                                onClick={() => setIsQuizOpen(true)}
+                                className="group relative inline-flex items-center gap-3 px-8 py-4 bg-indigo-900/30 border border-indigo-500/50 rounded-lg text-indigo-400 font-mono text-sm uppercase tracking-widest hover:bg-indigo-500 hover:text-white transition-all duration-300 shadow-[0_0_20px_rgba(99,102,241,0.15)] hover:shadow-[0_0_30px_rgba(99,102,241,0.5)]"
+                            >
                                 <span>Initialize Site Scan</span>
                                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                             </button>
@@ -97,6 +111,14 @@ export const SiteOS: React.FC = () => {
                     </div>
                 </div>
             </section>
+
+            <QuizModal
+                isOpen={isQuizOpen}
+                onClose={() => setIsQuizOpen(false)}
+                title="SITE SAFETY DIAGNOSTIC"
+                questions={siteQuestions}
+                accentColor="blue"
+            />
 
             <Footer />
         </div>
