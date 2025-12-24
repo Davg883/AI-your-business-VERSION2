@@ -15,7 +15,7 @@ export const Home: React.FC = () => {
                 <div className="mb-24 relative">
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900/50 border border-white/10 backdrop-blur-md mb-6">
                         <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
-                        <span className="text-xs font-mono text-blue-400 tracking-widest uppercase">Initializing Sequence v2.0</span>
+                        <span className="text-xs font-mono text-blue-400 tracking-widest uppercase">Architecting Intelligence</span>
                     </div>
 
                     <h1 className="text-5xl md:text-7xl font-bold font-display mb-6 tracking-tight leading-tight">
@@ -24,9 +24,15 @@ export const Home: React.FC = () => {
                     </h1>
 
                     <p className="text-lg text-slate-400 max-w-2xl border-l-2 border-blue-500/30 pl-6">
-                        Deploying autonomous neural networks for enterprise resource optimization.
-                        System status: <span className="text-emerald-400 font-mono">OPTIMAL</span>.
+                        We don't just build software. We write the manual for the next industrial revolution.
                     </p>
+                </div>
+
+                {/* Section Header: DEPLOYABLE SYSTEMS */}
+                <div className="flex items-center gap-4 mb-8">
+                    <div className="h-px bg-gradient-to-r from-transparent via-blue-500/50 to-transparent w-24" />
+                    <span className="text-sm font-mono text-blue-400 tracking-[0.2em] uppercase">Deployable Systems</span>
+                    <div className="h-px bg-gradient-to-r from-blue-500/50 via-transparent to-transparent flex-1" />
                 </div>
 
                 {/* Cards Container - Horizontal Scroll on Tablet/Mobile */}
@@ -154,13 +160,26 @@ export const Home: React.FC = () => {
 
                 </div>
 
+                {/* THE CONNECTOR - Data Line */}
+                <div className="relative h-32 flex justify-center items-center pointer-events-none">
+                    {/* Vertical Line */}
+                    <div className="absolute h-full w-px bg-gradient-to-b from-indigo-500/0 via-indigo-500/50 to-indigo-500/0" />
+
+                    {/* Pulsing Data Packets */}
+                    <div className="absolute h-full w-px flex flex-col items-center justify-evenly">
+                        <span className="w-1 h-3 bg-indigo-400 rounded-full animate-bounce delay-75 shadow-[0_0_10px_rgba(129,140,248,0.8)]" />
+                        <span className="w-1 h-3 bg-indigo-400 rounded-full animate-bounce delay-150 shadow-[0_0_10px_rgba(129,140,248,0.8)]" />
+                    </div>
+                </div>
+
                 {/* KNOWLEDGE BASE SECTION */}
                 <div className="mt-32 mb-12">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-900/30 border border-indigo-500/30 backdrop-blur-md mb-6">
-                        <BookOpen className="w-3 h-3 text-indigo-400" />
-                        <span className="text-xs font-mono text-indigo-300 tracking-widest uppercase">Knowledge Base</span>
+                    {/* Section Header: OPERATIONAL DOCTRINE */}
+                    <div className="flex items-center gap-4">
+                        <div className="h-px bg-gradient-to-r from-transparent via-indigo-500/50 to-transparent w-24" />
+                        <span className="text-sm font-mono text-indigo-400 tracking-[0.2em] uppercase">Operational Doctrine</span>
+                        <div className="h-px bg-gradient-to-r from-indigo-500/50 via-transparent to-transparent flex-1" />
                     </div>
-                    <h2 className="text-4xl font-bold font-display text-white mb-8">Operational Manuals</h2>
                 </div>
 
                 <div className="flex overflow-x-auto md:grid md:grid-cols-3 gap-6 pb-8 snap-x snap-mandatory scrollbar-hide -mx-6 px-6 md:mx-0 md:px-0">
@@ -168,14 +187,16 @@ export const Home: React.FC = () => {
                     {/* Book 1: AI for Text */}
                     <div className="group relative flex-shrink-0 w-[85vw] md:w-auto snap-center">
                         <div className="absolute inset-0 bg-slate-800/5 rounded-[2rem] blur-xl group-hover:bg-slate-700/10 transition-all duration-500" />
-                        <div className="relative h-full glass-panel glass-panel-hover p-8 flex flex-col overflow-hidden">
+                        <div className="relative h-full glass-panel glass-panel-hover p-8 flex flex-col overflow-hidden border border-white/5 shadow-2xl">
                             {/* Hover Reveal Cover */}
                             <div className="absolute inset-0 z-0">
                                 <img
                                     src="https://res.cloudinary.com/dptqxjhb8/image/upload/v1764194633/AI_for_Text_Cover_l9fle5.png"
                                     alt="AI for Text Cover"
-                                    className="w-full h-full object-cover opacity-0 group-hover:opacity-40 transition-opacity duration-700 mix-blend-overlay"
+                                    className="w-full h-full object-cover opacity-0 group-hover:opacity-60 transition-opacity duration-700 mix-blend-overlay"
                                 />
+                                {/* Scanning Line Effect */}
+                                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-indigo-400/10 to-transparent -translate-y-full group-hover:translate-y-full transition-transform duration-[2s] ease-in-out" />
                                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent" />
                             </div>
 
@@ -197,7 +218,7 @@ export const Home: React.FC = () => {
                                         Advanced prompt engineering and LLM integration strategies for enterprise workflows.
                                     </p>
                                     <div className="flex items-center text-xs font-mono text-indigo-400 uppercase tracking-widest gap-2">
-                                        <span>Read Protocol</span>
+                                        <span>Access Knowledge Base</span>
                                         <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                                     </div>
                                 </div>
@@ -208,14 +229,16 @@ export const Home: React.FC = () => {
                     {/* Book 2: AI for Media */}
                     <div className="group relative flex-shrink-0 w-[85vw] md:w-auto snap-center">
                         <div className="absolute inset-0 bg-slate-800/5 rounded-[2rem] blur-xl group-hover:bg-slate-700/10 transition-all duration-500" />
-                        <div className="relative h-full glass-panel glass-panel-hover p-8 flex flex-col overflow-hidden">
+                        <div className="relative h-full glass-panel glass-panel-hover p-8 flex flex-col overflow-hidden border border-white/5 shadow-2xl">
                             {/* Hover Reveal Cover */}
                             <div className="absolute inset-0 z-0">
                                 <img
                                     src="https://res.cloudinary.com/dptqxjhb8/image/upload/v1764194608/AI_for_Media_Level_1_Cover_rcc3r9.png"
                                     alt="AI for Media Cover"
-                                    className="w-full h-full object-cover opacity-0 group-hover:opacity-40 transition-opacity duration-700 mix-blend-overlay"
+                                    className="w-full h-full object-cover opacity-0 group-hover:opacity-60 transition-opacity duration-700 mix-blend-overlay"
                                 />
+                                {/* Scanning Line Effect */}
+                                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-purple-400/10 to-transparent -translate-y-full group-hover:translate-y-full transition-transform duration-[2s] ease-in-out" />
                                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent" />
                             </div>
 
@@ -237,7 +260,7 @@ export const Home: React.FC = () => {
                                         Generative imagery and video synthesis techniques for modern brand storytelling.
                                     </p>
                                     <div className="flex items-center text-xs font-mono text-purple-400 uppercase tracking-widest gap-2">
-                                        <span>Read Protocol</span>
+                                        <span>Access Knowledge Base</span>
                                         <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                                     </div>
                                 </div>
@@ -248,14 +271,16 @@ export const Home: React.FC = () => {
                     {/* Book 3: AI for Code */}
                     <div className="group relative flex-shrink-0 w-[85vw] md:w-auto snap-center">
                         <div className="absolute inset-0 bg-slate-800/5 rounded-[2rem] blur-xl group-hover:bg-slate-700/10 transition-all duration-500" />
-                        <div className="relative h-full glass-panel glass-panel-hover p-8 flex flex-col overflow-hidden">
+                        <div className="relative h-full glass-panel glass-panel-hover p-8 flex flex-col overflow-hidden border border-white/5 shadow-2xl">
                             {/* Hover Reveal Cover */}
                             <div className="absolute inset-0 z-0">
                                 <img
                                     src="https://res.cloudinary.com/dptqxjhb8/image/upload/v1764194585/AI_for_Code_Level_1_Cover_ufokuj.png"
                                     alt="AI for Code Cover"
-                                    className="w-full h-full object-cover opacity-0 group-hover:opacity-40 transition-opacity duration-700 mix-blend-overlay"
+                                    className="w-full h-full object-cover opacity-0 group-hover:opacity-60 transition-opacity duration-700 mix-blend-overlay"
                                 />
+                                {/* Scanning Line Effect */}
+                                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-emerald-400/10 to-transparent -translate-y-full group-hover:translate-y-full transition-transform duration-[2s] ease-in-out" />
                                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent" />
                             </div>
 
@@ -277,7 +302,7 @@ export const Home: React.FC = () => {
                                         Automating development pipelines and architectural reasoning with large language models.
                                     </p>
                                     <div className="flex items-center text-xs font-mono text-emerald-400 uppercase tracking-widest gap-2">
-                                        <span>Read Protocol</span>
+                                        <span>Access Knowledge Base</span>
                                         <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                                     </div>
                                 </div>
@@ -285,6 +310,7 @@ export const Home: React.FC = () => {
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     );
