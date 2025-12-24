@@ -1,9 +1,43 @@
 @import "tailwindcss";
 
+@theme {
+    --font-display: "Satoshi", "Inter", sans-serif;
+    --font-mono: "JetBrains Mono", monospace;
+
+    /* The Sovereign Colors */
+    --color-slate-950: #020617;
+    --color-glass-border: rgba(255, 255, 255, 0.1);
+    --color-glass-surface: rgba(255, 255, 255, 0.03);
+}
+
+@layer utilities {
+
+    /* THE APPLE GLASS CLASS */
+    .glass-panel {
+        @apply backdrop-blur-3xl bg-white/5 border border-white/10 shadow-2xl rounded-[2rem];
+        box-shadow:
+            0 4px 30px rgba(0, 0, 0, 0.5),
+            /* Deep drop shadow */
+            inset 0 0 0 1px rgba(255, 255, 255, 0.05),
+            /* Inner rim light */
+            inset 0 0 20px rgba(255, 255, 255, 0.02);
+        /* Subtle surface glow */
+    }
+
+    /* THE ACTIVE STATE (When hovering) */
+    .glass-panel-hover {
+        @apply transition-all duration-500 ease-out hover:bg-white/10 hover:border-white/20 hover:scale-[1.01] hover:shadow-indigo-500/20 cursor-pointer;
+    }
+
+    /* Text gradients for headers */
+    .text-glow {
+        @apply bg-clip-text text-transparent bg-gradient-to-b from-white to-white/60;
+    }
+}
+
 body {
-    @apply bg-slate-950 text-slate-200 antialiased selection:bg-blue-500/30 selection:text-blue-200;
-    background-image:
-        radial-gradient(circle at 15% 50%, rgba(56, 189, 248, 0.03) 0%, transparent 25%),
-        radial-gradient(circle at 85% 30%, rgba(99, 102, 241, 0.03) 0%, transparent 25%);
-    min-height: 100vh;
+    background-color: #020617;
+    /* Deepest Slate */
+    color: white;
+    antialiased: true;
 }
