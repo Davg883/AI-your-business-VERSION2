@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
 body {
-    @apply bg-gray-50 text-slate-900;
+    @apply bg-slate-950 text-slate-200 antialiased selection:bg-blue-500/30 selection:text-blue-200;
+    background-image:
+        radial-gradient(circle at 15% 50%, rgba(56, 189, 248, 0.03) 0%, transparent 25%),
+        radial-gradient(circle at 85% 30%, rgba(99, 102, 241, 0.03) 0%, transparent 25%);
+    min-height: 100vh;
 }
