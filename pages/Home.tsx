@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Utensils, Building2, Truck, ArrowRight, Activity, Cpu, ShieldCheck } from 'lucide-react';
+import { Utensils, Building2, Truck, ArrowRight, Activity, Cpu, ShieldCheck, BookOpen, FileText, Image as ImageIcon, Terminal } from 'lucide-react';
 
 export const Home: React.FC = () => {
     return (
@@ -152,6 +152,138 @@ export const Home: React.FC = () => {
                         </div>
                     </Link>
 
+                </div>
+
+                {/* KNOWLEDGE BASE SECTION */}
+                <div className="mt-32 mb-12">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-900/30 border border-indigo-500/30 backdrop-blur-md mb-6">
+                        <BookOpen className="w-3 h-3 text-indigo-400" />
+                        <span className="text-xs font-mono text-indigo-300 tracking-widest uppercase">Knowledge Base</span>
+                    </div>
+                    <h2 className="text-4xl font-bold font-display text-white mb-8">Operational Manuals</h2>
+                </div>
+
+                <div className="flex overflow-x-auto md:grid md:grid-cols-3 gap-6 pb-8 snap-x snap-mandatory scrollbar-hide -mx-6 px-6 md:mx-0 md:px-0">
+
+                    {/* Book 1: AI for Text */}
+                    <div className="group relative flex-shrink-0 w-[85vw] md:w-auto snap-center">
+                        <div className="absolute inset-0 bg-slate-800/5 rounded-[2rem] blur-xl group-hover:bg-slate-700/10 transition-all duration-500" />
+                        <div className="relative h-full glass-panel glass-panel-hover p-8 flex flex-col overflow-hidden">
+                            {/* Hover Reveal Cover */}
+                            <div className="absolute inset-0 z-0">
+                                <img
+                                    src="https://res.cloudinary.com/dptqxjhb8/image/upload/v1764194633/AI_for_Text_Cover_l9fle5.png"
+                                    alt="AI for Text Cover"
+                                    className="w-full h-full object-cover opacity-0 group-hover:opacity-40 transition-opacity duration-700 mix-blend-overlay"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent" />
+                            </div>
+
+                            <div className="relative z-10">
+                                <div className="absolute top-0 right-0 p-4 opacity-50">
+                                    <FileText className="w-16 h-16 text-slate-800" />
+                                </div>
+
+                                <div className="flex items-center justify-between mb-8">
+                                    <div className="p-3 bg-slate-800/50 rounded-lg border border-white/5 group-hover:border-indigo-500/30 transition-colors">
+                                        <FileText className="w-6 h-6 text-indigo-400" />
+                                    </div>
+                                    <span className="text-[10px] font-mono text-slate-500 border border-slate-800 px-2 py-1 rounded uppercase tracking-wider">REF: TXT-01</span>
+                                </div>
+
+                                <div className="mt-auto">
+                                    <h3 className="text-2xl font-bold font-display text-white mb-2 group-hover:text-indigo-400 transition-colors">AI for Text</h3>
+                                    <p className="text-sm text-slate-400 mb-6 leading-relaxed">
+                                        Advanced prompt engineering and LLM integration strategies for enterprise workflows.
+                                    </p>
+                                    <div className="flex items-center text-xs font-mono text-indigo-400 uppercase tracking-widest gap-2">
+                                        <span>Read Protocol</span>
+                                        <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Book 2: AI for Media */}
+                    <div className="group relative flex-shrink-0 w-[85vw] md:w-auto snap-center">
+                        <div className="absolute inset-0 bg-slate-800/5 rounded-[2rem] blur-xl group-hover:bg-slate-700/10 transition-all duration-500" />
+                        <div className="relative h-full glass-panel glass-panel-hover p-8 flex flex-col overflow-hidden">
+                            {/* Hover Reveal Cover */}
+                            <div className="absolute inset-0 z-0">
+                                <img
+                                    src="https://res.cloudinary.com/dptqxjhb8/image/upload/v1764194608/AI_for_Media_Level_1_Cover_rcc3r9.png"
+                                    alt="AI for Media Cover"
+                                    className="w-full h-full object-cover opacity-0 group-hover:opacity-40 transition-opacity duration-700 mix-blend-overlay"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent" />
+                            </div>
+
+                            <div className="relative z-10">
+                                <div className="absolute top-0 right-0 p-4 opacity-50">
+                                    <ImageIcon className="w-16 h-16 text-slate-800" />
+                                </div>
+
+                                <div className="flex items-center justify-between mb-8">
+                                    <div className="p-3 bg-slate-800/50 rounded-lg border border-white/5 group-hover:border-purple-500/30 transition-colors">
+                                        <ImageIcon className="w-6 h-6 text-purple-400" />
+                                    </div>
+                                    <span className="text-[10px] font-mono text-slate-500 border border-slate-800 px-2 py-1 rounded uppercase tracking-wider">REF: MED-01</span>
+                                </div>
+
+                                <div className="mt-auto">
+                                    <h3 className="text-2xl font-bold font-display text-white mb-2 group-hover:text-purple-400 transition-colors">AI for Media</h3>
+                                    <p className="text-sm text-slate-400 mb-6 leading-relaxed">
+                                        Generative imagery and video synthesis techniques for modern brand storytelling.
+                                    </p>
+                                    <div className="flex items-center text-xs font-mono text-purple-400 uppercase tracking-widest gap-2">
+                                        <span>Read Protocol</span>
+                                        <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Book 3: AI for Code */}
+                    <div className="group relative flex-shrink-0 w-[85vw] md:w-auto snap-center">
+                        <div className="absolute inset-0 bg-slate-800/5 rounded-[2rem] blur-xl group-hover:bg-slate-700/10 transition-all duration-500" />
+                        <div className="relative h-full glass-panel glass-panel-hover p-8 flex flex-col overflow-hidden">
+                            {/* Hover Reveal Cover */}
+                            <div className="absolute inset-0 z-0">
+                                <img
+                                    src="https://res.cloudinary.com/dptqxjhb8/image/upload/v1764194585/AI_for_Code_Level_1_Cover_ufokuj.png"
+                                    alt="AI for Code Cover"
+                                    className="w-full h-full object-cover opacity-0 group-hover:opacity-40 transition-opacity duration-700 mix-blend-overlay"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent" />
+                            </div>
+
+                            <div className="relative z-10">
+                                <div className="absolute top-0 right-0 p-4 opacity-50">
+                                    <Terminal className="w-16 h-16 text-slate-800" />
+                                </div>
+
+                                <div className="flex items-center justify-between mb-8">
+                                    <div className="p-3 bg-slate-800/50 rounded-lg border border-white/5 group-hover:border-emerald-500/30 transition-colors">
+                                        <Terminal className="w-6 h-6 text-emerald-400" />
+                                    </div>
+                                    <span className="text-[10px] font-mono text-slate-500 border border-slate-800 px-2 py-1 rounded uppercase tracking-wider">REF: COD-01</span>
+                                </div>
+
+                                <div className="mt-auto">
+                                    <h3 className="text-2xl font-bold font-display text-white mb-2 group-hover:text-emerald-400 transition-colors">AI for Code</h3>
+                                    <p className="text-sm text-slate-400 mb-6 leading-relaxed">
+                                        Automating development pipelines and architectural reasoning with large language models.
+                                    </p>
+                                    <div className="flex items-center text-xs font-mono text-emerald-400 uppercase tracking-widest gap-2">
+                                        <span>Read Protocol</span>
+                                        <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
