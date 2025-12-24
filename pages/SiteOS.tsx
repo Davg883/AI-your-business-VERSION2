@@ -46,10 +46,22 @@ export const SiteOS: React.FC = () => {
 
                     {/* Card 1: The Problem (Site Blindness) */}
                     <div className="col-span-1 md:col-span-4 group relative glass-panel overflow-hidden hover:border-indigo-500/30 transition-all duration-500">
-                        <div className="absolute top-0 right-0 p-6 opacity-20 group-hover:opacity-40 transition-opacity">
+                        {/* Background Image & Scan Effect */}
+                        <div className="absolute inset-0 z-0">
+                            <img
+                                src="https://res.cloudinary.com/dptqxjhb8/image/upload/v1766614157/building_project_kjl23u.png"
+                                alt="Construction Site Chaos"
+                                className="w-full h-full object-cover opacity-20 group-hover:opacity-40 transition-opacity duration-700 mix-blend-luminosity"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent" />
+                            {/* Scanning Line */}
+                            <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-transparent via-indigo-500/20 to-transparent animate-scan pointer-events-none opacity-50" />
+                        </div>
+
+                        <div className="absolute top-0 right-0 p-6 opacity-20 group-hover:opacity-40 transition-opacity z-10">
                             <AlertTriangle className="w-24 h-24 text-orange-500" />
                         </div>
-                        <div className="p-8 h-full flex flex-col">
+                        <div className="p-8 h-full flex flex-col relative z-10">
                             <div className="mb-auto">
                                 <span className="text-xs font-mono text-slate-500 uppercase tracking-widest block mb-4">Hazard Detected</span>
                                 <h3 className="text-3xl font-serif text-white leading-tight mb-4">
@@ -63,14 +75,29 @@ export const SiteOS: React.FC = () => {
                         </div>
                     </div>
 
-                    {/* Card 2: The Solution (Visual Asset Placeholder) */}
-                    <div className="col-span-1 md:col-span-5 relative group glass-panel h-96 md:h-auto flex items-center justify-center">
-                        {/* Placeholder UI */}
-                        <div className="absolute inset-4 border-2 border-dashed border-slate-700 rounded-2xl flex flex-col items-center justify-center bg-slate-900/50">
-                            <div className="w-16 h-16 rounded-full bg-slate-800 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                                <Map className="w-6 h-6 text-indigo-500 fill-current" />
+                    {/* Card 2: The Solution (Digital Twin) */}
+                    <div className="col-span-1 md:col-span-5 relative group glass-panel h-96 md:h-auto flex items-center justify-center overflow-hidden">
+                        {/* Background Image & Scan Effect */}
+                        <div className="absolute inset-0 z-0">
+                            <img
+                                src="https://res.cloudinary.com/dptqxjhb8/image/upload/v1764585735/New_build_site_image_i2kldo.png"
+                                alt="Real-Time Site Twin"
+                                className="w-full h-full object-cover opacity-50 group-hover:opacity-70 transition-opacity duration-700 mix-blend-luminosity"
+                            />
+                            <div className="absolute inset-0 bg-indigo-900/20 mix-blend-overlay" />
+                            {/* Scanning Line */}
+                            <div className="absolute top-0 left-0 w-full h-48 bg-gradient-to-b from-transparent via-indigo-400/30 to-transparent animate-scan pointer-events-none" />
+                        </div>
+
+                        {/* Content */}
+                        <div className="relative z-10 border-2 border-dashed border-white/20 rounded-2xl p-8 flex flex-col items-center justify-center bg-slate-950/60 backdrop-blur-sm">
+                            <div className="w-16 h-16 rounded-full bg-indigo-500/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 border border-indigo-500/40">
+                                <Map className="w-6 h-6 text-indigo-400 fill-current" />
                             </div>
-                            <span className="font-mono text-slate-500 text-xs uppercase tracking-widest">Real-Time Site Twin // Lidar Feed</span>
+                            <span className="font-mono text-indigo-300 text-xs uppercase tracking-widest text-center">
+                                Real-Time Site Twin <br />
+                                <span className="text-slate-500">Lidar Feed Online</span>
+                            </span>
                         </div>
                     </div>
 
