@@ -1,9 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { Play, ArrowRight, FileWarning, Clock } from 'lucide-react';
+import { QuizModal } from '../components/QuizModal';
 
 export const ChefOS: React.FC = () => {
+    const [isQuizOpen, setIsQuizOpen] = useState(false);
+
+    const chefQuestions = [
+        { id: 1, text: "Do you rely on paper logbooks for hygiene checks?", options: ["Yes", "No"] },
+        { id: 2, text: "How many hours per week does management spend on rosters?", options: ["Under 5 hours", "5 - 10 hours", "Over 10 hours"] },
+        { id: 3, text: "Have you had a stock discrepancy in the last month?", options: ["Yes", "No"] },
+        { id: 4, text: "Is your staff turnover higher than 20%?", options: ["Yes", "No"] },
+        { id: 5, text: "Do you have real-time visibility into kitchen prep levels?", options: ["Yes", "No"] }
+    ];
+
     return (
         <div className="min-h-screen bg-slate-950 text-slate-200 font-sans selection:bg-emerald-500/30">
             <Header />
@@ -89,7 +100,10 @@ export const ChefOS: React.FC = () => {
                                 Secure your spot in the Isle of Wight pilot program. Hardware installation and neural network calibration included.
                             </p>
 
-                            <button className="group relative inline-flex items-center gap-3 px-8 py-4 bg-emerald-900/30 border border-emerald-500/50 rounded-lg text-emerald-400 font-mono text-sm uppercase tracking-widest hover:bg-emerald-500 hover:text-white transition-all duration-300 shadow-[0_0_20px_rgba(16,185,129,0.15)] hover:shadow-[0_0_30px_rgba(16,185,129,0.5)]">
+                            <button
+                                onClick={() => setIsQuizOpen(true)}
+                                className="group relative inline-flex items-center gap-3 px-8 py-4 bg-emerald-900/30 border border-emerald-500/50 rounded-lg text-emerald-400 font-mono text-sm uppercase tracking-widest hover:bg-emerald-500 hover:text-white transition-all duration-300 shadow-[0_0_20px_rgba(16,185,129,0.15)] hover:shadow-[0_0_30px_rgba(16,185,129,0.5)]"
+                            >
                                 <span>Join the Isle of Wight Pilot</span>
                                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                             </button>
@@ -97,6 +111,14 @@ export const ChefOS: React.FC = () => {
                     </div>
                 </div>
             </section>
+
+            <QuizModal
+                isOpen={isQuizOpen}
+                onClose={() => setIsQuizOpen(false)}
+                title="ChefOS: Operational Risk Assessment"
+                questions={chefQuestions}
+                accentColor="emerald"
+            />
 
             <Footer />
         </div>
