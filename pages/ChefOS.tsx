@@ -1,11 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
-import { Play, ArrowRight, FileWarning, Clock } from 'lucide-react';
+import { Play, ArrowRight, FileWarning, Clock, Volume2, VolumeX } from 'lucide-react';
 import { QuizModal } from '../components/QuizModal';
 
 export const ChefOS: React.FC = () => {
     const [isQuizOpen, setIsQuizOpen] = useState(false);
+
+    // Video State
+    const videoRef = useRef<HTMLVideoElement>(null);
+    const [isMuted, setIsMuted] = useState(true);
+    const [volume, setVolume] = useState(1);
+    const [showControls, setShowControls] = useState(false);
 
     const chefQuestions = [
         { id: 1, text: "Do you rely on paper logbooks for hygiene checks?", options: ["Yes", "No"] },
@@ -14,6 +20,42 @@ export const ChefOS: React.FC = () => {
         { id: 4, text: "Is your staff turnover higher than 20%?", options: ["Yes", "No"] },
         { id: 5, text: "Do you have real-time visibility into kitchen prep levels?", options: ["Yes", "No"] }
     ];
+
+    // Handle initial volume set
+    useEffect(() => {
+        if (videoRef.current) {
+            videoRef.current.volume = volume;
+        }
+    }, []);
+
+    const toggleMute = () => {
+        if (videoRef.current) {
+            const newMutedState = !isMuted;
+            videoRef.current.muted = newMutedState;
+            setIsMuted(newMutedState);
+
+            // If unmuting and volume is 0, set to 0.5
+            if (!newMutedState && volume === 0) {
+                setVolume(0.5);
+                videoRef.current.volume = 0.5;
+            }
+        }
+    };
+
+    const handleVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const newVolume = parseFloat(e.target.value);
+        setVolume(newVolume);
+        if (videoRef.current) {
+            videoRef.current.volume = newVolume;
+            if (newVolume > 0 && isMuted) {
+                videoRef.current.muted = false;
+                setIsMuted(false);
+            } else if (newVolume === 0 && !isMuted) {
+                videoRef.current.muted = true;
+                setIsMuted(true);
+            }
+        }
+    };
 
     return (
         <div className="min-h-screen bg-slate-950 text-slate-200 font-sans selection:bg-emerald-500/30">
@@ -63,14 +105,57 @@ export const ChefOS: React.FC = () => {
                         </div>
                     </div>
 
-                    {/* Card 2: The Solution (Visual Asset Placeholder) */}
-                    <div className="col-span-1 md:col-span-5 relative group glass-panel h-96 md:h-auto flex items-center justify-center">
-                        {/* Placeholder UI */}
-                        <div className="absolute inset-4 border-2 border-dashed border-slate-700 rounded-2xl flex flex-col items-center justify-center bg-slate-900/50">
-                            <div className="w-16 h-16 rounded-full bg-slate-800 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                                <Play className="w-6 h-6 text-emerald-500 fill-current" />
+                    {/* Card 2: The Solution (Video Feed) */}
+                    <div
+                        className="col-span-1 md:col-span-5 relative group glass-panel h-96 md:h-auto flex flex-col items-center justify-center overflow-hidden"
+                        onMouseEnter={() => setShowControls(true)}
+                        onMouseLeave={() => setShowControls(false)}
+                    >
+                        {/* Video Background */}
+                        <div className="absolute inset-0 z-0">
+                            <video
+                                ref={videoRef}
+                                autoPlay
+                                loop
+                                muted
+                                playsInline
+                                className="w-full h-full object-cover"
+                            >
+                                <source src="https://res.cloudinary.com/dptqxjhb8/video/upload/v1764178466/ChefOS_Sizzle_Short_LowRes_wralnf.mp4" type="video/mp4" />
+                            </video>
+                            {/* Gradient Overlay for Text Readability */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-90" />
+                        </div>
+
+                        {/* Controls Overlay */}
+                        <div className={`absolute top-4 right-4 z-20 transition-opacity duration-300 ${showControls ? 'opacity-100' : 'opacity-0 md:opacity-0 md:group-hover:opacity-100'}`}>
+                            <div className="flex items-center gap-2 bg-slate-900/60 backdrop-blur-md rounded-full px-3 py-1.5 border border-white/10">
+                                <button
+                                    onClick={toggleMute}
+                                    className="text-white hover:text-emerald-400 transition-colors"
+                                >
+                                    {isMuted || volume === 0 ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
+                                </button>
+
+                                <input
+                                    type="range"
+                                    min="0"
+                                    max="1"
+                                    step="0.01"
+                                    value={isMuted ? 0 : volume}
+                                    onChange={handleVolumeChange}
+                                    className="w-20 h-1 bg-slate-600 rounded-lg appearance-none cursor-pointer accent-emerald-500"
+                                />
                             </div>
-                            <span className="font-mono text-slate-500 text-xs uppercase tracking-widest">Live Feed // Kitchen Tablet</span>
+                        </div>
+
+                        {/* Content Overlay */}
+                        <div className="relative z-10 p-6 flex flex-col items-center justify-center h-full mt-32">
+                            {/* Floating Pill */}
+                            <div className="bg-slate-900/80 backdrop-blur border border-emerald-500/30 px-4 py-2 rounded-full flex items-center gap-2 mb-2 shadow-lg">
+                                <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+                                <span className="font-mono text-emerald-400 text-xs uppercase tracking-widest">Live Feed // Kitchen Tablet</span>
+                            </div>
                         </div>
                     </div>
 
